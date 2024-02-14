@@ -1,8 +1,7 @@
-import { API_URL } from "../app/(home)/page";
 import styles from "../styles/similar-movie.module.css";
 
 async function getSimlarVideos(id: string) {
-  const response = await fetch(`${API_URL}/${id}/similar`);
+  const response = await fetch(`${process.env.API_URL}/${id}/similar`);
   return response.json();
 }
 
