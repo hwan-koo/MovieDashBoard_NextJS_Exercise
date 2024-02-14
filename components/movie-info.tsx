@@ -1,8 +1,8 @@
 import potato from "../styles/movie-info.module.css";
-import { URL } from "../app/(home)/page";
+import { API_URL } from "../app/(home)/page";
 
 export async function getMovie(id: string) {
-  const response = await fetch(`${URL}/${id}`);
+  const response = await fetch(`${API_URL}/${id}`);
   return response.json();
 }
 
