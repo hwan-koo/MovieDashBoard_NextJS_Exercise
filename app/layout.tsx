@@ -1,8 +1,9 @@
 import { Metadata } from "next";
 import Navigation from "../components/navigation";
+import "../styles/global.css";
 
 export const metadata: Metadata = {
-  title: { template: "%s | Next Movies", default: "로딩중.." },
+  title: { template: "%s | Movies Dashboard", default: "로딩중.." },
   description: "연습 설명",
 };
 

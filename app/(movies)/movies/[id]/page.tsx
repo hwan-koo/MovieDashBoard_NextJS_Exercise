@@ -1,23 +1,21 @@
 import { Suspense } from "react";
 import { URL } from "../../../(home)/page";
-import MovieInfo from "../../../../components/movie-info";
+import MovieInfo, { getMovie } from "../../../../components/movie-info";
 import MovieVideos from "../../../../components/movie-viedos";
 
-async function getMovie(id: string) {
-  const response = await fetch(`${URL}/${id}`);
-  return response.json();
-}
-
-async function getVideos(id: string) {
-  const response = await fetch(`${URL}/${id}/videos`);
-  return response.json();
-}
-
-export default async function MovieDetail({
-  params: { id },
-}: {
+interface Iparams {
   params: { id: string };
-}) {
+}
+
+// Dynamic Metadata
+export async function generateMetadata({ params: { id } }: Iparams) {
+  const movie = await getMovie(id);
+  return {
+    title: movie.title,
+  };
+}
+
+export default async function MovieDetail({ params: { id } }: Iparams) {
   return (
     <div>
       <Suspense fallback={<h1>로딩중 정보</h1>}>
