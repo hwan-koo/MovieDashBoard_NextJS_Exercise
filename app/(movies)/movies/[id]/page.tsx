@@ -1,7 +1,7 @@
 import { Suspense } from "react";
-import { URL } from "../../../(home)/page";
 import MovieInfo, { getMovie } from "../../../../components/movie-info";
 import MovieVideos from "../../../../components/movie-viedos";
+import SimliarMovie from "../../../../components/similar-movie";
 
 interface Iparams {
   params: { id: string };
@@ -18,11 +18,14 @@ export async function generateMetadata({ params: { id } }: Iparams) {
 export default async function MovieDetail({ params: { id } }: Iparams) {
   return (
     <div>
-      <Suspense fallback={<h1>로딩중 정보</h1>}>
+      <Suspense fallback={<h1>영화 정보 로딩중</h1>}>
         <MovieInfo id={id} />
-      </Suspense>{" "}
-      <Suspense fallback={<h1>로딩중 동영상</h1>}>
+      </Suspense>
+      <Suspense fallback={<h1>트레일러 정보 로딩중</h1>}>
         <MovieVideos id={id} />
+      </Suspense>
+      <Suspense fallback={<h1>비슷한 영화 정보 로딩중</h1>}>
+        <SimliarMovie id={id} />
       </Suspense>
     </div>
   );
